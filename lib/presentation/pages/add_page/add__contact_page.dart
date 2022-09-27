@@ -8,6 +8,7 @@ import 'package:password_id/data/menu_opearations.dart';
 import 'package:password_id/models/category.dart';
 import 'package:password_id/models/contact.dart';
 import 'package:password_id/models/menu_bank.dart';
+import 'package:password_id/presentation/pages/contacts_page.dart';
 import 'package:password_id/presentation/widgets/categories_dropdown.dart';
 import 'package:password_id/presentation/widgets/menu_dropdown.dart';
 
@@ -340,7 +341,10 @@ class _AddContactPageState extends State<AddContactPage> {
                       category: _selectedCategory.name,
                     );
                     contactOperations.createContact(contact);
-                    Navigator.of(context).pushReplacementNamed('/homePage');
+                    // Navigator.of(context).pushReplacementNamed('/homePage');
+                    var route =
+                        MaterialPageRoute(builder: (context) => ContactsPage());
+                    Navigator.push(context, route);
                   },
                   child: Container(
                     color: Colors.teal,

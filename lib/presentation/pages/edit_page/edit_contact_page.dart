@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:password_id/data/contact_operations.dart';
 import 'package:password_id/models/contact.dart';
+import 'package:password_id/presentation/pages/contacts_page.dart';
 
 class EditContactPage extends StatefulWidget {
   Contact? contact;
@@ -38,14 +39,14 @@ class _EditContactPageState extends State<EditContactPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Chỉnh Sửa Thẻ'),
-        leading: GestureDetector(
-          onTap: () {
-            Navigator.of(context).pushReplacementNamed('/homePage');
-          },
-          child: const Icon(
-            Icons.arrow_back, // add custom icons also
-          ),
-        ),
+        // leading: GestureDetector(
+        //   onTap: () {
+        //     Navigator.of(context).pushReplacementNamed('/homePage');
+        //   },
+        //   child: const Icon(
+        //     Icons.arrow_back, // add custom icons also
+        //   ),
+        // ),
       ),
       body: SingleChildScrollView(
         child: Center(
@@ -142,7 +143,8 @@ class _EditContactPageState extends State<EditContactPage> {
           //update
           contactOperations.updateContact(widget.contact!);
           //home
-          // Navigator.of(context).pushReplacementNamed('/homePage');
+          var route = MaterialPageRoute(builder: ((context) => ContactsPage()));
+          Navigator.pushReplacement(context, route);
         },
       ),
     );

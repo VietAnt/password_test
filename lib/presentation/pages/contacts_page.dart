@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:password_id/data/contact_operations.dart';
 import 'package:password_id/data/inter_operations.dart';
+import 'package:password_id/main.dart';
 import 'package:password_id/models/contact.dart';
 import 'package:password_id/models/interbanking.dart';
 import 'package:password_id/presentation/widgets/contact_list.dart';
@@ -26,6 +27,16 @@ class _ContactsPageState extends State<ContactsPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Manager Smart V1'),
+        centerTitle: true,
+        actions: [
+          IconButton(
+              onPressed: () {
+                var route =
+                    MaterialPageRoute(builder: (context) => MyHomePage());
+                Navigator.push(context, route);
+              },
+              icon: Icon(Icons.logout)),
+        ],
       ),
       body: RefreshIndicator(
           triggerMode: RefreshIndicatorTriggerMode.onEdge,
@@ -72,7 +83,7 @@ class _ContactsPageState extends State<ContactsPage> {
                         height: 15,
                       ),
                       const Text(
-                        'e-Banking(SmartBanking) ',
+                        'e-Banking',
                         style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
