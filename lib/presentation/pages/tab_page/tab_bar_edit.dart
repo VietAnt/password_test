@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:password_id/presentation/pages/contacts_page.dart';
 import 'package:password_id/presentation/pages/edit_page/edit_contact_page.dart';
 import 'package:password_id/presentation/pages/edit_page/edit_it_apge.dart';
 
@@ -9,10 +10,12 @@ class TabbarEditPage extends StatelessWidget {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('---Chọn Loại Thẻ---'),
+          title: const Text(' Chọn Loại Thẻ'),
           leading: GestureDetector(
             onTap: () {
-              Navigator.of(context).pushReplacementNamed('/homePage');
+              var route =
+                  MaterialPageRoute(builder: (context) => ContactsPage());
+              Navigator.pushReplacement(context, route);
             },
             child: const Icon(
               Icons.arrow_back,

@@ -23,14 +23,6 @@ class _SearchPageState extends State<SearchPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Tìm Kiếm Thẻ'),
-        // leading: GestureDetector(
-        //   onTap: () {
-        //     Navigator.of(context).pushReplacementNamed('/homePage');
-        //   },
-        //   child: const Icon(
-        //     Icons.arrow_back, // add custom icons also
-        //   ),
-        // ),
       ),
       body: SingleChildScrollView(
         child: Center(

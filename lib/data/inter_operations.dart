@@ -60,6 +60,4 @@ class InterOperations {
         allRows.map((contact) => InterBanking.fromMap(contact)).toList();
     return contacts;
   }
-
-  //
 }

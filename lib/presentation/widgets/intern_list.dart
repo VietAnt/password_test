@@ -50,22 +50,6 @@ class InterList extends StatelessWidget {
                           ],
                         ),
                         SizedBox(height: 5),
-                        // Row(
-                        //   children: [
-                        //     const Text('Số Thứ Tự : ',
-                        //         style: TextStyle(
-                        //             color: Colors.white,
-                        //             fontSize: 15,
-                        //             fontWeight: FontWeight.bold)),
-                        //     Text(
-                        //       ' ${inters[index].idbanking} ',
-                        //       style: const TextStyle(
-                        //           color: Colors.white,
-                        //           fontSize: 18,
-                        //           fontWeight: FontWeight.bold),
-                        //     ),
-                        //   ],
-                        // ),
                         Row(
                           children: [
                             const Text('Ngân Hàng  : ',
@@ -104,7 +88,7 @@ class InterList extends StatelessWidget {
                               padding: const EdgeInsets.all(5.0),
                               child: ElevatedButton(
                                 onPressed: () {
-                                  Navigator.push(
+                                  Navigator.pushReplacement(
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) => ViewInterPage(
@@ -120,7 +104,7 @@ class InterList extends StatelessWidget {
                               padding: const EdgeInsets.all(5.0),
                               child: ElevatedButton(
                                 onPressed: () {
-                                  Navigator.push(
+                                  Navigator.pushReplacement(
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) => EditInterPage(
@@ -129,7 +113,7 @@ class InterList extends StatelessWidget {
                                 },
 
                                 // color: Colors.green,
-                                child: Icon(
+                                child: const Icon(
                                   Icons.edit,
                                   color: Colors.white,
                                 ),

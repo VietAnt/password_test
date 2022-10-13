@@ -39,14 +39,15 @@ class _EditContactPageState extends State<EditContactPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Chỉnh Sửa Thẻ'),
-        // leading: GestureDetector(
-        //   onTap: () {
-        //     Navigator.of(context).pushReplacementNamed('/homePage');
-        //   },
-        //   child: const Icon(
-        //     Icons.arrow_back, // add custom icons also
-        //   ),
-        // ),
+        actions: [
+          IconButton(
+              onPressed: () {
+                var route =
+                    MaterialPageRoute(builder: (context) => ContactsPage());
+                Navigator.pushReplacement(context, route);
+              },
+              icon: Icon(Icons.home)),
+        ],
       ),
       body: SingleChildScrollView(
         child: Center(
@@ -136,7 +137,7 @@ class _EditContactPageState extends State<EditContactPage> {
         child: const Icon(Icons.edit),
         onPressed: () {
           widget.contact?.name = _nameController.text;
-          widget.contact?.number = int.parse(_passwordController.text);
+          widget.contact?.number = int.parse(_numberController.text);
           widget.contact?.date = _dateController.text;
           widget.contact?.password = int.parse(_passwordController.text);
           widget.contact?.nametype = _nametypeController.text;

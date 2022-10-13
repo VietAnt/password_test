@@ -31,14 +31,6 @@ class _SearchContactsByCategoryState extends State<SearchContactsByCategory> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Tìm kiếm Theo Danh Mục'),
-        // leading: GestureDetector(
-        //   onTap: () {
-        //     Navigator.of(context).pushReplacementNamed('/homePage');
-        //   },
-        //   child: const Icon(
-        //     Icons.arrow_back,
-        //   ),
-        // ),
       ),
       body: Center(
         child: Column(

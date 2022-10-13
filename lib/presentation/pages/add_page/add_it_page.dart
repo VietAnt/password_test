@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:password_id/data/category_operations.dart';
 import 'package:password_id/data/inter_operations.dart';
 import 'package:password_id/models/category.dart';
 import 'package:password_id/models/interbanking.dart';
+import 'package:password_id/presentation/pages/contacts_page.dart';
 import 'package:password_id/presentation/widgets/categories_dropdown.dart';
 
 class AddInterPage extends StatefulWidget {
@@ -56,14 +56,7 @@ class _AddInterPageState extends State<AddInterPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Thêm dữ liệu  E-Banking'),
-        // leading: GestureDetector(
-        //   onTap: () {
-        //     Navigator.of(context).pushReplacementNamed('/homePage');
-        //   },
-        //   child: const Icon(
-        //     Icons.arrow_back,
-        //   ),
-        // ),
+        centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -82,15 +75,6 @@ class _AddInterPageState extends State<AddInterPage> {
                   labelText: 'Tên Tài Khoản',
                   hintText: 'Số Điện Thoại',
                 ),
-                // keyboardType: TextInputType.text,
-                // textCapitalization:
-                //     TextCapitalization.characters, //viết hoa tất cả chữ cái
-                // inputFormatters: <TextInputFormatter>[
-                //   FilteringTextInputFormatter.allow(RegExp(r'[A-Z ]')),
-                // ],
-                inputFormatters: <TextInputFormatter>[
-                  FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
-                ],
               ),
             ),
             Padding(
@@ -174,7 +158,7 @@ class _AddInterPageState extends State<AddInterPage> {
                 ],
               ),
               actions: <Widget>[
-                TextButton(
+                ElevatedButton(
                   onPressed: () {
                     final contact = InterBanking(
                       usernamebanking: int.parse(_usernameITController.text),
@@ -182,7 +166,9 @@ class _AddInterPageState extends State<AddInterPage> {
                       category: _selectedCategory.name,
                     );
                     interOperations.createInter(contact);
-                    Navigator.of(context).pushReplacementNamed('/homePage');
+                    var route =
+                        MaterialPageRoute(builder: (context) => ContactsPage());
+                    Navigator.pushReplacement(context, route);
                   },
                   child: Container(
                     color: Colors.teal,
@@ -202,7 +188,9 @@ class _AddInterPageState extends State<AddInterPage> {
                 ),
                 TextButton(
                   onPressed: () {
-                    Navigator.of(context).pushReplacementNamed('/homePage');
+                    var route =
+                        MaterialPageRoute(builder: (context) => ContactsPage());
+                    Navigator.pushReplacement(context, route);
                   },
                   child: Container(
                     color: Colors.teal,
@@ -223,13 +211,6 @@ class _AddInterPageState extends State<AddInterPage> {
               ],
             ),
           );
-          // final contact = InterBanking(
-          //   usernamebanking: int.parse(_usernameITController.text),
-          //   passwordbanking: _passwordITController.text,
-          //   category: _selectedCategory.name,
-          // );
-          // interOperations.createInter(contact);
-          // Navigator.of(context).pushReplacementNamed('/homePage');
         },
         child: Icon(Icons.add),
       ),

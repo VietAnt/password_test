@@ -22,15 +22,7 @@ class _SearchBankingPageState extends State<SearchBankingPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Tìm Kiếm Thẻ'),
-        // leading: GestureDetector(
-        //   onTap: () {
-        //     Navigator.of(context).pushReplacementNamed('/homePage');
-        //   },
-        //   child: const Icon(
-        //     Icons.arrow_back, // add custom icons also
-        //   ),
-        // ),
+        title: const Text('Tìm Kiếm e-Banking'),
       ),
       body: SingleChildScrollView(
         child: Center(

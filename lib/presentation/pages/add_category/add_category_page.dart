@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:password_id/data/category_operations.dart';
 import 'package:password_id/models/category.dart';
+import 'package:password_id/presentation/pages/contacts_page.dart';
 import 'package:password_id/presentation/widgets/category_list.dart';
 
 class AddCategoryPage extends StatefulWidget {
@@ -24,7 +25,8 @@ class _AddCategoryPageState extends State<AddCategoryPage> {
         title: Text('Thêm Ngân Hàng'),
         leading: GestureDetector(
           onTap: () {
-            Navigator.of(context).pushReplacementNamed('/homePage');
+            var route = MaterialPageRoute(builder: (context) => ContactsPage());
+            Navigator.pushReplacement(context, route);
           },
           child: const Icon(
             Icons.arrow_back,

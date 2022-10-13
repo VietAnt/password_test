@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:password_id/presentation/pages/add_category/add_category_page.dart';
+import 'package:password_id/presentation/pages/tab_page/tab_bar_add.dart';
+import 'package:password_id/presentation/pages/tab_page/tab_bar_search.dart';
 
 class HorizontalButtonBar extends StatelessWidget {
   HorizontalButtonBar({
@@ -20,8 +23,9 @@ class HorizontalButtonBar extends StatelessWidget {
                     ElevatedButton(
                       // heroTag: 'contacts',
                       onPressed: () {
-                        Navigator.of(context)
-                            .pushReplacementNamed('/tabBarPage');
+                        var route = MaterialPageRoute(
+                            builder: (context) => TabbarPage());
+                        Navigator.pushReplacement(context, route);
                       },
                       // child: Icon(Icons.person_add),
                       child: Row(
@@ -32,8 +36,9 @@ class HorizontalButtonBar extends StatelessWidget {
                     ElevatedButton(
                       // heroTag: 'add category button',
                       onPressed: () {
-                        Navigator.of(context)
-                            .pushReplacementNamed('/addCategoryPage');
+                        var route = MaterialPageRoute(
+                            builder: (context) => AddCategoryPage());
+                        Navigator.pushReplacement(context, route);
                       },
                       // child: Icon(Icons.playlist_add_rounded),
                       child: Row(
@@ -56,8 +61,9 @@ class HorizontalButtonBar extends StatelessWidget {
                   children: [
                     ElevatedButton(
                         onPressed: () {
-                          Navigator.of(context)
-                              .pushReplacementNamed('/tabBarSearchPage');
+                          var route = MaterialPageRoute(
+                              builder: (context) => TabbarSearchPage());
+                          Navigator.pushReplacement(context, route);
                         },
                         child: Row(
                           children: [

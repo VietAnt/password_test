@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:password_id/data/contact_operations.dart';
 import 'package:password_id/models/contact.dart';
+import 'package:password_id/presentation/pages/contacts_page.dart';
 
 class ViewContactPage extends StatefulWidget {
   Contact? contact;
@@ -78,14 +79,15 @@ class _ViewContactPageState extends State<ViewContactPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(' Thông Tin Thẻ'),
-        // leading: GestureDetector(
-        //   onTap: () {
-        //     Navigator.of(context).pushReplacementNamed('/homePage');
-        //   },
-        //   child: const Icon(
-        //     Icons.arrow_back, // add custom icons also
-        //   ),
-        // ),
+        actions: [
+          IconButton(
+              onPressed: () {
+                var route =
+                    MaterialPageRoute(builder: (context) => ContactsPage());
+                Navigator.pushReplacement(context, route);
+              },
+              icon: Icon(Icons.logout)),
+        ],
       ),
       body: SingleChildScrollView(
         child: Center(

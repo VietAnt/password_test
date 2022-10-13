@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:password_id/data/inter_operations.dart';
 import 'package:password_id/models/interbanking.dart';
+import 'package:password_id/presentation/pages/contacts_page.dart';
 
 class EditInterPage extends StatefulWidget {
   InterBanking? inters;
@@ -20,6 +21,7 @@ class _EditInterPageState extends State<EditInterPage> {
 
   var _nameitController = TextEditingController();
   var _passitController = TextEditingController();
+  var _bankController = TextEditingController();
 
   bool isHiddenPass = true;
 
@@ -27,6 +29,7 @@ class _EditInterPageState extends State<EditInterPage> {
   Widget build(BuildContext context) {
     _nameitController.text = widget.inters!.usernamebanking.toString();
     _passitController.text = widget.inters!.passwordbanking.toString();
+    _bankController.text = widget.inters!.category.toString();
     return Scaffold(
       appBar: AppBar(
         title: const Text('Chỉnh Sửa E-Banking'),
@@ -77,6 +80,16 @@ class _EditInterPageState extends State<EditInterPage> {
                   ),
                 ),
               ),
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: TextField(
+                  controller: _bankController,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Ngân Hàng',
+                  ),
+                ),
+              ),
             ],
           ),
         ),
@@ -88,6 +101,8 @@ class _EditInterPageState extends State<EditInterPage> {
           widget.inters!.usernamebanking = int.parse(_nameitController.text);
 
           interOperations.updateInter(widget.inters!);
+          var route = MaterialPageRoute(builder: ((context) => ContactsPage()));
+          Navigator.pushReplacement(context, route);
           // Navigator.of(context).pushReplacementNamed('/homePage');
         },
       ),

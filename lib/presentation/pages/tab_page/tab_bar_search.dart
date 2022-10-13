@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:password_id/presentation/pages/contacts_page.dart';
 import 'package:password_id/presentation/pages/search_page/search_contacts.dart';
 import 'package:password_id/presentation/pages/search_page/search_it.dart';
 
@@ -11,15 +12,17 @@ class TabbarSearchPage extends StatelessWidget {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('---Tìm Kiếm Thẻ---'),
-          leading: GestureDetector(
-            onTap: () {
-              Navigator.of(context).pushReplacementNamed('/homePage');
-            },
-            child: const Icon(
-              Icons.arrow_back,
-            ),
-          ),
+          title: const Text(' Tìm Kiếm Dữ Liệu'),
+          centerTitle: true,
+          actions: [
+            IconButton(
+                onPressed: () {
+                  var route =
+                      MaterialPageRoute(builder: (context) => ContactsPage());
+                  Navigator.pushReplacement(context, route);
+                },
+                icon: Icon(Icons.logout)),
+          ],
         ),
         body: Column(
           children: [

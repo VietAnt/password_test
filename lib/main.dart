@@ -29,9 +29,6 @@ class MyApp extends StatelessWidget {
         '/searchContactsByCategory': (context) => TabSearchCategory(),
         '/tabBarPage': (context) => TabbarPage(),
         '/tabBarSearchPage': (context) => TabbarSearchPage(),
-        // '/homePage': (context) => GroupList(),
-        // '/addContactPage': (context) => AddContactPage(),
-        // '/searchPage': (context) => SearchPage(),
       },
       // home: GroupList(),
       home: MyHomePage(),
@@ -53,6 +50,7 @@ class MyHomePage extends StatelessWidget {
         return await auth.authenticate(
           localizedReason: 'Quét Vân Tay Hoặc Mật Mã Để Vào Ứng Dụng',
           options: const AuthenticationOptions(
+            // biometricOnly: false,
             useErrorDialogs: true,
             stickyAuth: true,
           ),
@@ -68,82 +66,83 @@ class MyHomePage extends StatelessWidget {
         title: const Text('Manager Smart Bank'),
         centerTitle: true,
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Center(
-              child: Text(
-                "Đăng Nhập",
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 30,
-                  fontWeight: FontWeight.w600,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 60),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Center(
+                child: Text(
+                  "Đăng Nhập",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 30,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
               ),
-            ),
-            Container(
-              margin: const EdgeInsets.symmetric(vertical: 20),
-              child: Column(
-                children: [
-                  Image.asset(
-                    'assets/images.png',
-                    width: 150,
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  const Text(
-                    "Xác Thực Mật Mã",
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  Container(
-                    margin: EdgeInsets.symmetric(vertical: 12),
-                    width: 190,
-                    child: const Text(
-                      "Có Thể Xác thực Bằng Vân Tay Hoặc Mật Khẩu Của Bạn ",
-                      textAlign: TextAlign.center,
+              Container(
+                margin: const EdgeInsets.symmetric(vertical: 20),
+                child: Column(
+                  children: [
+                    Image.asset(
+                      'assets/images.png',
+                      width: 150,
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    const Text(
+                      "Xác Thực Mật Mã",
                       style: TextStyle(
-                        color: Colors.black,
-                        height: 1.5,
+                          color: Colors.black,
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.symmetric(vertical: 12),
+                      width: 190,
+                      child: const Text(
+                        "Hãy Tạo Trắc Sinh Học Để Vào Ứng Dụng. Xác thực Bằng Vân Tay Hoặc Mật Khẩu Của Bạn ",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.black,
+                          height: 1.5,
+                        ),
                       ),
                     ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.symmetric(vertical: 10),
-                    width: double.infinity,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 10, horizontal: 24),
-                      child: ElevatedButton(
-                        onPressed: () async {
-                          bool isAuthenticated = await authenticate();
+                    Container(
+                      margin: EdgeInsets.symmetric(vertical: 10),
+                      width: double.infinity,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 10, horizontal: 24),
+                        child: ElevatedButton(
+                          onPressed: () async {
+                            bool isAuthenticated = await authenticate();
 
-                          if (isAuthenticated) {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) {
-                                  return ContactsPage();
-                                },
-                              ),
-                            );
-                          } else {
-                            Container();
-                          }
-                        },
-                        child: const Text('Xác thực Mật Mã'),
+                            if (isAuthenticated) {
+                              var route = MaterialPageRoute(builder: (context) {
+                                return ContactsPage();
+                              });
+                              Navigator.pushReplacement(context, route);
+                            } else {
+                              Container();
+                            }
+                          },
+                          child: const Text(
+                            'Xác thực Mật Mã',
+                            style: TextStyle(fontSize: 18),
+                          ),
+                        ),
                       ),
-                    ),
-                  )
-                ],
+                    )
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

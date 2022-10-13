@@ -93,7 +93,7 @@ class ContactsList extends StatelessWidget {
                               padding: const EdgeInsets.all(5.0),
                               child: ElevatedButton(
                                 onPressed: () {
-                                  Navigator.push(
+                                  Navigator.pushReplacement(
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) => ViewContactPage(
@@ -109,7 +109,7 @@ class ContactsList extends StatelessWidget {
                               padding: const EdgeInsets.all(5.0),
                               child: ElevatedButton(
                                 onPressed: () {
-                                  Navigator.push(
+                                  Navigator.pushReplacement(
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) => EditContactPage(

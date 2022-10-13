@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 import 'package:intl/intl.dart';
 import 'package:password_id/data/category_operations.dart';
 import 'package:password_id/data/contact_operations.dart';
@@ -91,14 +90,7 @@ class _AddContactPageState extends State<AddContactPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Thêm dữ liệu thẻ'),
-        // leading: GestureDetector(
-        //   onTap: () {
-        //     Navigator.of(context).pushReplacementNamed('/homePage');
-        //   },
-        //   child: const Icon(
-        //     Icons.arrow_back,
-        //   ),
-        // ),
+        centerTitle: true,
       ),
       body: ListView(
         children: [
@@ -119,21 +111,6 @@ class _AddContactPageState extends State<AddContactPage> {
                   ],
                 ),
               ),
-              // Padding(
-              //   padding: const EdgeInsets.all(10.0),
-              //   child: TextField(
-              //     controller: _numberController,
-              //     decoration: const InputDecoration(
-              //       border: OutlineInputBorder(),
-              //       labelText: 'Số thẻ',
-              //     ),
-              //     keyboardType: TextInputType.number,
-              //     maxLength: 16,
-              //     inputFormatters: <TextInputFormatter>[
-              //       FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
-              //     ],
-              //   ),
-              // ),
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: TextField(
@@ -179,27 +156,6 @@ class _AddContactPageState extends State<AddContactPage> {
                   },
                 ),
               ),
-              // Padding(
-              //   padding: const EdgeInsets.all(10.0),
-              //   child: TextField(
-              //     controller: _passwordController,
-              //     maxLength: 6, //giới hạn ký tự
-              //     keyboardType: TextInputType.number,
-              //     obscureText: isHiddenPass,
-              //     decoration: InputDecoration(
-              //         border: OutlineInputBorder(),
-              //         labelText: 'Mã PIN',
-              //         suffixIcon: InkWell(
-              //           onTap: _togglePassView,
-              //           child: const Icon(
-              //             Icons.visibility,
-              //           ),
-              //         )),
-              //     inputFormatters: <TextInputFormatter>[
-              //       FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
-              //     ],
-              //   ),
-              // ),
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: TextField(
@@ -341,10 +297,9 @@ class _AddContactPageState extends State<AddContactPage> {
                       category: _selectedCategory.name,
                     );
                     contactOperations.createContact(contact);
-                    // Navigator.of(context).pushReplacementNamed('/homePage');
                     var route =
                         MaterialPageRoute(builder: (context) => ContactsPage());
-                    Navigator.push(context, route);
+                    Navigator.pushReplacement(context, route);
                   },
                   child: Container(
                     color: Colors.teal,
@@ -364,7 +319,9 @@ class _AddContactPageState extends State<AddContactPage> {
                 ),
                 TextButton(
                   onPressed: () {
-                    Navigator.of(context).pushReplacementNamed('/homePage');
+                    var route =
+                        MaterialPageRoute(builder: (context) => ContactsPage());
+                    Navigator.pushReplacement(context, route);
                   },
                   child: Container(
                     color: Colors.teal,

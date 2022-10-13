@@ -26,14 +26,14 @@ class _ContactsPageState extends State<ContactsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Manager Smart V1'),
+        title: const Text('Manager Smart '),
         centerTitle: true,
         actions: [
           IconButton(
               onPressed: () {
                 var route =
                     MaterialPageRoute(builder: (context) => MyHomePage());
-                Navigator.push(context, route);
+                Navigator.pushReplacement(context, route);
               },
               icon: Icon(Icons.logout)),
         ],
@@ -44,7 +44,8 @@ class _ContactsPageState extends State<ContactsPage> {
           displacement: 200,
           strokeWidth: 5,
           onRefresh: () async {
-            Navigator.of(context).pushReplacementNamed('/homePage');
+            var route = MaterialPageRoute(builder: (context) => ContactsPage());
+            Navigator.pushReplacement(context, route);
           },
           color: Colors.teal,
           backgroundColor: Colors.white,

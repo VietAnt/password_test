@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:password_id/data/inter_operations.dart';
 import 'package:password_id/models/interbanking.dart';
+import 'package:password_id/presentation/pages/contacts_page.dart';
 
 class ViewInterPage extends StatefulWidget {
   InterBanking? inters;
@@ -54,14 +55,15 @@ class _ViewInterPageState extends State<ViewInterPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Thông Tin E-Banking'),
-        // leading: GestureDetector(
-        //   onTap: () {
-        //     Navigator.of(context).pushReplacementNamed('/homePage');
-        //   },
-        //   child: const Icon(
-        //     Icons.arrow_back, // add custom icons also
-        //   ),
-        // ),
+        actions: [
+          IconButton(
+              onPressed: () {
+                var route =
+                    MaterialPageRoute(builder: (context) => ContactsPage());
+                Navigator.pushReplacement(context, route);
+              },
+              icon: const Icon(Icons.home)),
+        ],
       ),
       body: SingleChildScrollView(
         child: Center(
@@ -127,7 +129,8 @@ class _ViewInterPageState extends State<ViewInterPage> {
           // widget.inters!.usernamebanking = int.parse(_nameitController.text);
 
           interOperations.deleteInter(widget.inters!);
-          Navigator.of(context).pushReplacementNamed('/homePage');
+          var route = MaterialPageRoute(builder: (context) => ContactsPage());
+          Navigator.pushReplacement(context, route);
         },
       ),
     );

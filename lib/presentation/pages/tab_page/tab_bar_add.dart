@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:password_id/presentation/pages/add_page/add__contact_page.dart';
 import 'package:password_id/presentation/pages/add_page/add_it_page.dart';
+import 'package:password_id/presentation/pages/contacts_page.dart';
 
 class TabbarPage extends StatelessWidget {
   const TabbarPage({super.key});
@@ -11,15 +12,17 @@ class TabbarPage extends StatelessWidget {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('---Thêm Dữ Liệu---'),
-          leading: GestureDetector(
-            onTap: () {
-              Navigator.of(context).pushReplacementNamed('/homePage');
-            },
-            child: const Icon(
-              Icons.arrow_back,
-            ),
-          ),
+          title: const Text('Thêm Dữ Liệu'),
+          centerTitle: true,
+          actions: [
+            IconButton(
+                onPressed: () {
+                  var route =
+                      MaterialPageRoute(builder: (context) => ContactsPage());
+                  Navigator.pushReplacement(context, route);
+                },
+                icon: Icon(Icons.logout)),
+          ],
         ),
         body: Column(
           children: [

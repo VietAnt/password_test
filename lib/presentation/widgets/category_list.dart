@@ -3,6 +3,8 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:password_id/data/category_operations.dart';
 import 'package:password_id/models/category.dart';
+import 'package:password_id/presentation/pages/contacts_page.dart';
+import 'package:password_id/presentation/pages/tab_page/tab_bar_edit.dart';
 
 class CategoryList extends StatelessWidget {
   List<Category> category;
@@ -97,7 +99,9 @@ class CategoryList extends StatelessWidget {
                         children: [
                           ElevatedButton(
                             onPressed: () {
-                              Navigator.of(context).pop(true);
+                              var route = MaterialPageRoute(
+                                  builder: (context) => ContactsPage());
+                              Navigator.pushReplacement(context, route);
                               categoryOperations
                                   .deleteCategory(category[index]);
                             },
@@ -113,7 +117,11 @@ class CategoryList extends StatelessWidget {
                           ),
                           const SizedBox(width: 20),
                           ElevatedButton(
-                            onPressed: () => Navigator.of(context).pop(false),
+                            onPressed: () {
+                              var route = MaterialPageRoute(
+                                  builder: (context) => TabbarEditPage());
+                              Navigator.pushReplacement(context, route);
+                            },
                             child: Row(
                               children: const [
                                 Text("Hủy"),

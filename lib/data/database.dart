@@ -9,9 +9,6 @@ class DatabaseRepository {
   static final DatabaseRepository instance =
       DatabaseRepository.privateConstructor();
 
-  // final _databaseName = 'sasu';
-  // final _databaseVersion = 1;
-
   Database? _database;
 
   Future<Database?> get database async {
